@@ -16,21 +16,21 @@ MAINTAINER Peter Barabas <z0d@notresp.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ADD http://rephial.org/downloads/4.0/angband-4.0.4.tar.gz /tmp/
+ADD http://rephial.org/downloads/4.0/angband-4.0.5.tar.gz /tmp/
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y libncursesw5 locales && \
     locale-gen en_US.UTF-8 && \
     apt-get install -y gcc make libncursesw5-dev automake && \
     cd /tmp && \
-    tar xf angband-4.0.4.tar.gz && \
-    cd angband-4.0.4 && \
+    tar xf angband-4.0.5.tar.gz && \
+    cd angband-4.0.5 && \
     ./autogen.sh && \
     ./configure --localstatedir=/var && \
     make && \
     make install && \
     cd /tmp && \
-    rm -rf angband-4.0.4.tar.gz angband-4.0.4 && \
+    rm -rf angband-4.0.5.tar.gz angband-4.0.5 && \
     apt-get purge -y gcc make libncursesw5-dev automake && \
     apt-get autoremove -y && \
     apt-get clean
